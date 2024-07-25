@@ -1,0 +1,33 @@
+<p>form1 works!</p>
+<div class="container w-75 mx-auto">
+
+    <h1 class="text-danger">Template Driven Form</h1>
+    <form class="" #myForm="ngForm" (ngSubmit)="checkForm(myForm.value)">
+      
+        <div class="mb-3">
+          <label for="exampleInputName" class="form-label">Name </label>
+          <input type="text" class="form-control" id="exampleInputName" pattern="[a-zA-Z]+$" minlength="7" maxlength="15" aria-describedby="emailHelp" placeholder="Enter Name" name="name"  ngModel value="" #name="ngModel" [class.is-invalid]="name.invalid && name.touched" required>
+        
+        <div class="text-danger" [class.d-none]="name.valid || name.untouched">
+            <div *ngIf="name.errors?.['required']">Please Enter Your Name....</div>
+            <div *ngIf="name.errors?.['minlength']">minlength is 7-15....</div>
+            <div *ngIf="name.errors?.['pattern']">Only Character are allowed....</div>
+        </div>
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email </label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Email" name="email" ngModel value="" #email="ngModel" [class.is-invalid]="email.invalid && email.touched" required>
+            <span class="text-danger" [class.d-none]="email.valid || email.untouched"> Please Enter Your Email....</span>
+
+        </div>
+        <div class="mb-3">
+            <label for="Contact" class="form-label">Contact </label>
+            <input type="number" class="form-control" id="Contact" aria-describedby="emailHelp" placeholder="Enter Contcat" name="contact" ngModel value="" #contact="ngModel" [class.is-invalid]="contact.invalid && contact.touched" required="">
+            <span class="text-danger" [class.d-none]="contact.valid || contact.untouched"> Please Enter Your Contact....</span>
+
+          </div>
+    
+        
+        <button type="submit" class="btn btn-primary w-50 d-block m-auto">Submit</button>
+      </form>
+</div>

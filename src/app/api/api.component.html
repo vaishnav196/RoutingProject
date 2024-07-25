@@ -1,0 +1,55 @@
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="formDetails" (ngSubmit)="SaveDetails(formDetails.value)">
+          <div class="mb-3">
+            <label for="exampleInputName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="exampleInputName" placeholder="Enter Name" name="name" formControlName="name">
+          </div>
+          <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Email</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter Email" name="email" formControlName="email">
+          </div>
+          <div class="mb-3">
+            <label for="Salary" class="form-label">Salary</label>
+            <input type="text" class="form-control" id="Salary" placeholder="Enter Salary" name="Salary" formControlName="Salary">
+          </div>
+          <button type="submit" class="btn btn-primary w-50 d-block m-auto">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Employee</button>
+  <table class="table container w-50 table-dark table-striped">
+    <thead class="table-dark table-hover">
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Salary</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of allData">
+        <td>{{x.id}}</td>
+        <td>{{x.name}}</td>
+        <td>{{x.email}}</td>
+        <td>{{x.Salary}}</td>
+        <td>
+          <button class="btn btn-primary" (click)="deleteEmployee(x.id)">Delete</button>
+          <button class="btn btn-primary ms-3" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="UpdateEmployee(x.id)">Update</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
